@@ -22,15 +22,20 @@ export default function Home() {
   ]);
 
   const [inputValue, setInputValue] = useState("");
-  const [isDone, setDone] = useState(false);
-  // () => setDone(!isDone);
+
   const handleClick = () => {
     setTask((tasks) => [...tasks, { task: inputValue, isDone: false }]);
   };
 
-  const done = function (tasks) {
-    tasks.forEach((task) => {
-      if (task.isDone == true) return task;
+  // const done = function (tasks) {
+  //   tasks.forEach((task) => {
+  //     if (task.isDone === true) return task;
+  //   });
+  // };
+
+  const done = (tasks) => {
+    tasks.filter((task) => {
+      return task.isDone === true;
     });
   };
 
@@ -63,7 +68,7 @@ export default function Home() {
               <Task
                 key={i}
                 taskName={obj.task}
-                // isDone={obj.isDone}
+                isDone={obj.isDone}
                 deleteBtn={() => {
                   setTask(() => {
                     return tasks.filter((el, index) => index !== i);
