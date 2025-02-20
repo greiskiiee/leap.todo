@@ -1,7 +1,22 @@
 import React from "react";
 
-export const Container = () => {
+export const Container = ({ handleChange, handleClick }) => {
   return (
-    <input className="text-black outline-none border border-grey-200 focus-visible:border-[#3c82f6] rounded-md px-4 py-2 min-w-[227px]" />
+    <div className="w-[290px] h-fit flex justify-center gap-[6px] ">
+      <input
+        onChange={(event) => {
+          handleChange(event.target.value);
+        }}
+        type="text"
+        placeholder="Add a new task"
+        className="text-[#103714] text-[14px] bg-[#fffdf6] outline-none border font-sans border-grey-200 rounded-md px-4 py-1 min-w-[235px]"
+      />
+      <button
+        onClick={handleClick}
+        className={`bg-[#628b34] text-[14px] text-[#fffdf6] px-3 py-2 rounded-md `}
+      >
+        Add
+      </button>
+    </div>
   );
 };

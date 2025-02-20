@@ -1,19 +1,30 @@
-import React from "react";
-import { Button } from "./Button";
+import React, { useState } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 
-export const Task = () => {
+export const Task = ({ taskName, deleteBtn }) => {
+  const [isDone, setDone] = useState(false);
   return (
-    <div className="flex items-center justify-between w-full p-2 bg-[#EFF8FF] rounded-md">
+    <div className="flex items-center justify-between w-full p-2 bg-[#fffdf6] rounded-md">
       <div className="flex gap-[10px]">
-        <input type="checkbox" />
-        <p className="text-black font-normal"> Create PR</p>
+        <input
+          type="checkbox"
+          checked={isDone}
+          onChange={() => setDone(!isDone)}
+        />
+        <p
+          className={
+            // "text-[#103714] font-normal text-[14px]"
+            isDone
+              ? "line-through text-[#103714] font-normal text-[14px]"
+              : "text-[#103714] font-normal text-[14px]"
+          }
+        >
+          {taskName}
+        </p>
       </div>
-      <Button className="bg-[#FEF2f2] tetx-[#EF4444] px-3 py-[6px]">
-        <div>
-          <MdDeleteOutline />
-        </div>
-      </Button>
+      <button onClick={deleteBtn} className="w-fit px-2 py-[6px] rounded-md">
+        <MdDeleteOutline color="#628b34" />
+      </button>
     </div>
   );
 };

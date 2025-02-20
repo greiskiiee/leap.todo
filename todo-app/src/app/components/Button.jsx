@@ -1,9 +1,9 @@
 import React from "react";
 
-export const Button = ({ children, className }) => {
+export const Button = ({ buttonName, className }) => {
   return (
-    <button className={`bg-[#FFB2AE] px-4 py-2 rounded-md ` + className}>
-      {children}
+    <button className={` px-3  rounded-md text-[14px] ` + className}>
+      {buttonName}
     </button>
   );
 };
