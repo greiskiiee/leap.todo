@@ -1,20 +1,15 @@
 import React, { useState } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 
-export const Task = ({ taskName, isDone, deleteBtn }) => {
-  const [isChecked, setDone] = useState(isDone);
+export const Task = ({ taskName, isDone, deleteBtn, onChange }) => {
+  // const [isChecked, setDone] = useState(isDone);
   return (
     <div className="flex items-center justify-between w-full p-2 bg-[#fffdf6] rounded-md">
       <div className="flex gap-[10px]">
-        <input
-          type="checkbox"
-          checked={isChecked}
-          onChange={() => setDone(!isChecked)}
-        />
+        <input type="checkbox" defaultChecked={isDone} onChange={onChange} />
         <p
           className={
-            // "text-[#103714] font-normal text-[14px]"
-            isChecked
+            isDone
               ? "line-through text-[#103714] font-normal text-[14px]"
               : "text-[#103714] font-normal text-[14px]"
           }
